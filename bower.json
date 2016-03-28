@@ -25,6 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular-touch": "~1.2"
+    "angular-touch": "~1.5"
   }
 }
