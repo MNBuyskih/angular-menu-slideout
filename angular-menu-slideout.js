@@ -42,7 +42,7 @@ angular.module('MenuSlideout', ['ngTouch'])
                     return '-' + pre + '-';
                 })();
 
-            $scope.menuWidth = $scope.menuWidth || 300;
+            scope.menuWidth = scope.menuWidth || 100;
 
             $swipe.bind($elem, {
                 start: function (coords, event) {
