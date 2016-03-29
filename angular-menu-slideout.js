@@ -87,8 +87,6 @@ angular.module('MenuSlideout', ['ngTouch'])
                     $elem.addClass(transitionClass).removeClass(isSlidingClass);
                     $elem.removeAttr('style');
                 }
-            }, {
-                moveYBufferRadius: moveYBufferRadius
             });
 
             $rootScope.$on('toggleSlideMenu', function(event, isOpen) {
