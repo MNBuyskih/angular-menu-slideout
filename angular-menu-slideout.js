@@ -2,6 +2,7 @@ angular.module('MenuSlideout', ['ngTouch'])
 .directive('menuSlideout', ['$swipe', '$document', '$rootScope', function ($swipe, $document, $rootScope) {
     return {
         restrict: 'A',
+        scope: {menuWidth: '='},
         link: function (scope, $elem, attrs) {
             var startCoords, dir, endCoords, lastCoords,
 
@@ -41,6 +42,8 @@ angular.module('MenuSlideout', ['ngTouch'])
                     return '-' + pre + '-';
                 })();
 
+            $scope.menuWidth = $scope.menuWidth || 300;
+
             $swipe.bind($elem, {
                 start: function (coords, event) {
                     toleranceMet = false;
@@ -70,8 +73,8 @@ angular.module('MenuSlideout', ['ngTouch'])
                     $elem.removeClass(transitionClass).addClass(isSlidingClass);
 
                     // restrict x to be between 0 and menuWidth
-                    var x = coords.x - startCoords.x + ($elem.hasClass(openClass) ? menuWidth : 0);
-                    x = Math.max(0, Math.min(menuWidth, x));
+                    var x = coords.x - startCoords.x + ($elem.hasClass(openClass) ? scope.menuWidth : 0);
+                    x = Math.max(0, Math.min(scope.menuWidth, x));
 
                     // translate3d is WAY more performant than left
                     // thanks to GPU acceleration (especially
